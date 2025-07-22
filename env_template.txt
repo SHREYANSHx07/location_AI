@@ -2,7 +2,7 @@
 # Copy this file to .env and replace the placeholder values with your actual API keys
 
 # Required API Keys
-SERPAPI_KEY=your_serpapi_key_here
+SERPAPI_KEY=a1b74d41b1564537886ff610b084f23a73d0619c03ce31744e72e6190dacd009
 GOOGLE_SHEETS_CREDENTIALS_PATH=./google_credentials.json
 
 # Optional Settings

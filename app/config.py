@@ -5,7 +5,7 @@ class Config:
     """Configuration class for the Lead Finder Automation app"""
     
     # API Keys
-    SERPAPI_KEY: Optional[str] = None
+    SERPAPI_KEY: Optional[str] = "a1b74d41b1564537886ff610b084f23a73d0619c03ce31744e72e6190dacd009"  # Default key
     OPENAI_API_KEY: Optional[str] = None
     
     # Google Sheets Configuration
@@ -31,7 +31,10 @@ class Config:
     @classmethod
     def load_from_env(cls):
         """Load configuration from environment variables"""
-        cls.SERPAPI_KEY = os.getenv('SERPAPI_KEY')
+        # Only load SERPAPI_KEY from env if not already set as default
+        if not cls.SERPAPI_KEY or cls.SERPAPI_KEY == "your_serpapi_key_here":
+            cls.SERPAPI_KEY = os.getenv('SERPAPI_KEY', cls.SERPAPI_KEY)
+        
         cls.OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
         cls.GOOGLE_SHEETS_CREDENTIALS_PATH = os.getenv('GOOGLE_SHEETS_CREDENTIALS_PATH')
         cls.DEFAULT_SPREADSHEET_ID = os.getenv('DEFAULT_SPREADSHEET_ID')
@@ -60,8 +63,9 @@ class Config:
         if not cls.SERPAPI_KEY:
             missing_keys.append("SERPAPI_KEY")
         
-        if not cls.GOOGLE_SHEETS_CREDENTIALS_PATH:
-            missing_keys.append("GOOGLE_SHEETS_CREDENTIALS_PATH")
+        # Google Sheets is optional, so don't require it
+        # if not cls.GOOGLE_SHEETS_CREDENTIALS_PATH:
+        #     missing_keys.append("GOOGLE_SHEETS_CREDENTIALS_PATH")
         
         if missing_keys:
             print(f"Missing required configuration: {', '.join(missing_keys)}")

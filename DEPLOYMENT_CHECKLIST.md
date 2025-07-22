@@ -28,9 +28,9 @@
 - [ ] Set main file: `streamlit_app.py`
 - [ ] Click "Deploy!"
 
-### 4. Environment Variables
-- [ ] In Streamlit Cloud dashboard, add:
-  - `SERPAPI_KEY`: Your SerpAPI key
+### 4. Environment Variables (Optional)
+- [ ] In Streamlit Cloud dashboard, add (optional):
+  - `SERPAPI_KEY`: Your SerpAPI key (default key is pre-configured)
   - `GOOGLE_SHEETS_CREDENTIALS_PATH`: (optional)
 
 ### 5. Test Deployment

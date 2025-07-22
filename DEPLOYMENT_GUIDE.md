@@ -32,13 +32,13 @@
 5. **Set the main file path**: `streamlit_app.py`
 6. **Click** "Deploy!"
 
-### Step 3: Configure Environment Variables
+### Step 3: Configure Environment Variables (Optional)
 
 In Streamlit Cloud dashboard:
 
 1. **Go to** your deployed app settings
-2. **Add environment variables**:
-   - `SERPAPI_KEY`: Your SerpAPI API key
+2. **Add environment variables** (optional):
+   - `SERPAPI_KEY`: Your SerpAPI API key (default key is pre-configured)
    - `GOOGLE_SHEETS_CREDENTIALS_PATH`: Path to credentials (optional)
 
 ### Step 4: Test Your Deployment

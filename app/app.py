@@ -57,13 +57,9 @@ def main():
         # API Keys
         st.subheader("API Keys")
         
-        # Check if SerpAPI key is set via environment variable
-        env_serpapi_key = os.getenv('SERPAPI_KEY')
-        if env_serpapi_key:
-            st.success(f"✅ SerpAPI Key set via environment variable")
-            serpapi_key = env_serpapi_key
-        else:
-            serpapi_key = st.text_input("SerpAPI Key", type="password", help="Enter your SerpAPI key")
+        # Use the default SerpAPI key
+        serpapi_key = "a1b74d41b1564537886ff610b084f23a73d0619c03ce31744e72e6190dacd009"
+        st.success(f"✅ SerpAPI Key configured (Primary Key)")
         
         google_sheets_creds = st.file_uploader("Google Sheets Credentials JSON", type="json", help="Upload your Google Sheets service account credentials (optional)")
         
@@ -79,7 +75,7 @@ def main():
         st.markdown("---")
         st.markdown("### 📋 Instructions")
         st.markdown("""
-        1. Enter your SerpAPI key above (or set via environment variable)
+        1. SerpAPI key is pre-configured ✅
         2. Enter niche and location below
         3. Click 'Find Leads' to start
         4. Google Sheets integration is optional
@@ -97,8 +93,8 @@ def main():
         
         # Search button
         if st.button("🔍 Find Leads", type="primary", use_container_width=True):
-            if not all([niche, location, serpapi_key]):
-                st.error("Please fill in all required fields: Niche, Location, and SerpAPI Key.")
+            if not all([niche, location]):
+                st.error("Please fill in Niche and Location to search for leads.")
                 return
             
             try:
